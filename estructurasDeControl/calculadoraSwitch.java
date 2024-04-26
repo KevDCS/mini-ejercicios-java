@@ -4,69 +4,65 @@ import java.util.Scanner;
 
 public class calculadoraSwitch {
 
-
-  public static class Operaciones {
-    public int suma(int a, int b) {
-      return a + b;
-    }
-
-    public int resta(int a, int b) {
-      return a - b;
-    }
-
-    public int multiplicacion(int a, int b) {
-      return a * b;
-    }
-
-    public double division(int a, int b) {
-      if (b != 0) {
-        return (double) a / b;
-      } else {
-        throw new IllegalArgumentException("No se puede dividir entre cero.");
-      }
-    }
-  }
-
   public static void main(String[] args) {
     System.out.println("Menú principal de calculadora.");
-    int a;
-    int b;
-
-    Operaciones operacion = new Operaciones();
     Scanner inputData = new Scanner(System.in);
-    String opcion;
 
-    do {
-      System.out.println("Seleccione la operación que quiere realizar: SUMA, RESTA, MULTIPLICACION, DIVISION, SALIR");
-      opcion = inputData.nextLine().toUpperCase();
+    while (true) {
 
-      if(!"SALIR".equals(opcion)) {
+      // Se muestra un menú de opciones al usuario en consola
+      System.out.println("Por favor elija que operación desea hacer: ");
+      System.out.println("1. Sumar");
+      System.out.println("2. Restar");
+      System.out.println("3. Multiplicar");
+      System.out.println("4. Dividir");
+      System.out.println("5. Salir");
 
-        System.out.println("Ingrese un valor:");
-        a = inputData.nextInt();
-        System.out.println("Ingrese un valor:");
-        b = inputData.nextInt();
-        
-        switch (opcion) {
-          case "SUMA":
-            System.out.println("Suma: " + operacion.suma(a, b));
-            break;
-          case "RESTA":
-            System.out.println("Resta: " + operacion.resta(a, b));
-            break;
-          case "MULTIPLICACION":
-            System.out.println("Multiplacion: " + operacion.multiplicacion(a, b));
-            break;
-          case "DIVISION":
-            System.out.println("Division: " + operacion.division(a, b));
-            break;
-          default:
-            System.out.println("Opción desconocida, escriba otra tecla");
-            break;
-        }
+      // Se captura la opción elegida por el usuario
+      System.out.println("Opción: ");
+      int option = inputData.nextInt();
+
+      if (option == 5) {
+        System.out.println("Ha salido del programa.");
+        break;
       }
-    } while (!"SALIR".equals(opcion));
-    
+
+      // Capturar los valores para hacer las operaciones
+      System.out.println("Ingrese el primer número: ");
+      double num1 = inputData.nextDouble();
+      System.out.println("Ingrese el segundo número: ");
+      double num2 = inputData.nextDouble();
+
+      double result = 0;
+      switch (option) {
+        case 1:
+          result= num1 + num2;
+          System.out.println("La suma de " + num1 + " y " + num2 + " es " + result);
+          break;
+        case 2:
+          result= num1 - num2;
+          System.out.println("La resta de " + num1 + " y " + num2 + " es " + result);
+          break;
+        case 3:
+          result= num1 * num2;
+          System.out.println("La multiplicación de " + num1 + " y " + num2 + " es " + result);
+          break;
+        case 4:
+          if (num2 != 0) {
+            result= num1 / num2;
+          } else {
+            System.out.println("No es posible dividir entre 0.");
+            continue;
+          }
+          System.out.println("La division de " + num1 + " y " + num2 + " es " + result);
+          break;
+        case 5:
+          System.out.println("Salir del programa");
+          break;
+        default:
+          System.out.println("Opción no valida.");
+      }
+    }
     inputData.close();
   }
 }
