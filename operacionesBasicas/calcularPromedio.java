@@ -24,5 +24,8 @@ public class calcularPromedio {
     int num5 = inputData.nextInt();
     
     System.out.println("El promedio de estas cantidades es: " + (num1+num2+num3+num4+num5) / 5);
+    
+    inputData.close();
   }
+
 }
