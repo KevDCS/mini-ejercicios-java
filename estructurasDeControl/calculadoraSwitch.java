@@ -33,22 +33,27 @@ public class calculadoraSwitch {
       System.out.println("Ingrese el segundo número: ");
       double num2 = inputData.nextDouble();
 
+      // Se crea la variable result para almacenar el resultado de cada operación.
       double result = 0;
       switch (option) {
+        // Sumar
         case 1:
           result= num1 + num2;
           System.out.println("La suma de " + num1 + " y " + num2 + " es " + result);
           break;
+        // Restar
         case 2:
           result= num1 - num2;
           System.out.println("La resta de " + num1 + " y " + num2 + " es " + result);
           break;
+        // Multiplicar
         case 3:
           result= num1 * num2;
           System.out.println("La multiplicación de " + num1 + " y " + num2 + " es " + result);
           break;
+        // Dividir
         case 4:
-          if (num2 != 0) {
+          if (num2 != 0) { // Se hace un if para verificar que el usuario no ingresa un 0 en el segundo número
             result= num1 / num2;
           } else {
             System.out.println("No es posible dividir entre 0.");
